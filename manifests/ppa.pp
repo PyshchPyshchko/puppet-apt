@@ -9,10 +9,10 @@ define apt::ppa (
   }
 
   $ppa_name = inline_template("<%=
-    if ppa.is_a?(Array)
-      ppa.join('-')
+    if @ppa.is_a?(Array)
+      @ppa.join('-')
     else
-      ppa
+      @ppa
     end %>")
 
   apt::sources_list {"${name}-${ppa_name}-${lsbdistcodename}":
